@@ -9,13 +9,11 @@ const Footer = () => {
         {/* LEFT */}
         <div className="w-full md:w-1/2 lg:w-1/4 flex flex-col gap-8">
           <Link href="/">
-            <div className="text-2xl tracking-wide">MyFitnessAI</div>
+            <div className="text-2xl tracking-wide">My Fitness AI</div>
           </Link>
-          <p>
-            323 Dr Martin Luther King Jr Blvd, Newark, NJ 07102, United States
-          </p>
-          <span className="font-semibold">myfitnessai@fitness.com</span>
-          <span className="font-semibold">+1 234 567 890</span>
+          <p>3180 18th Street San Francisco, CA, 94110</p>
+          <span className="font-semibold">mfai@myfitnessai.com</span>
+          <span className="font-semibold">+1 234-567-890</span>
           <div className="flex gap-6">
             <Image src="/facebook.png" alt="" width={16} height={16} />
             <Image src="/instagram.png" alt="" width={16} height={16} />
