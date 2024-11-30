@@ -1,22 +1,28 @@
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
 import Skeleton from "@/components/Skeleton";
-import dbConnect from "@/lib/dbConnect";
-import Collection from "@/models/Collection";
 import Image from "next/image";
 import { Suspense } from "react";
+import { supabase } from '@/lib/supabaseClient';
 
 const ListPage = async ({ searchParams }: { searchParams: any }) => {
-  // Connect to MongoDB
-  await dbConnect();
+  // Fetch category based on slug or default to "all-products"
+  const categorySlug = searchParams.cat || "all-products";
+  const { data: category, error } = await supabase
+    .from("collections")
+    .select("*")
+    .eq("slug", categorySlug)
+    .single();
 
-  // Fetch the collection by slug or return a default collection
-  const cat = (await Collection.findOne({
-    slug: searchParams.cat || "all-products",
-  }).lean()) || {
-    name: "All Products",
-    _id: "00000000-000000-000000-000000000001",
-  };
+  // Fallback to a default category if none is found
+  if (!category) {
+    return {
+      collection: {
+        id: "00000000-000000-0000-000000000001",
+        name: "All Products",
+      },
+    };
+  }
 
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
@@ -38,9 +44,12 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
       {/* FILTER */}
       <Filter />
       {/* PRODUCTS */}
-      <h1 className="mt-12 text-xl font-semibold">{cat.name} For You!</h1>
+      <h1 className="mt-12 text-xl font-semibold">{category?.name} For You!</h1>
       <Suspense fallback={<Skeleton />}>
-        <ProductList categoryId={cat._id} searchParams={searchParams} />
+        <ProductList
+          categoryId={category?.id || "00000000-000000-000000-000000000001"}
+          searchParams={searchParams}
+        />
       </Suspense>
     </div>
   );
