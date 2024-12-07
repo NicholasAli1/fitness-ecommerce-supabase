@@ -48,30 +48,19 @@ const LoginPage = () => {
 
     try {
       let result;
-
-      switch (mode) {
-        case MODE.LOGIN:
-          result = await login(email, password);  // Use server-side login action
-          break;
-
-        case MODE.REGISTER:
-          result = await signup(email, password, username);  // Use server-side signup action
-          break;
-
-          // Other cases (RESET_PASSWORD, EMAIL_VERIFICATION) can follow here
-
-        default:
-          break;
+      if (mode === MODE.LOGIN) {
+        result = await login({ email, password });
+      } else if (mode === MODE.REGISTER) {
+        result = await signup({ email, password });
       }
 
-      if (result.error) {
+      if (result?.error) {
         setError(result.error);
       } else {
-        setMessage(result.message);
+        setMessage("Operation successful!");
         if (mode === MODE.LOGIN) {
           router.push("/");
-        }
-        if (mode === MODE.REGISTER) {
+        } else if (mode === MODE.REGISTER) {
           setMode(MODE.EMAIL_VERIFICATION);
         }
       }
@@ -82,6 +71,8 @@ const LoginPage = () => {
       setIsLoading(false);
     }
   };
+
+
 
   return (
       <div className="h-[calc(100vh-80px)] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 flex items-center justify-center">

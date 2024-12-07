@@ -9,15 +9,15 @@ import CategoryList from "@/components/CategoryList";
 const HomePage = async () => {
   // Fetch the featured and new product categories from Supabase
   const { data: featuredCategory, error: featuredError } = await supabase
-    .from("collections") // Assuming 'collections' is your categories table
+    .from("categories")
     .select("*")
-    .eq("id", process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID)
+    .eq("id", process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID || 1)
     .single();
 
   const { data: newCategory, error: newError } = await supabase
-    .from("collections") // Assuming 'collections' is your categories table
+    .from("categories")
     .select("*")
-    .eq("id", process.env.FEATURED_PRODUCTS_NEW_CATEGORY_ID)
+    .eq("id", process.env.FEATURED_PRODUCTS_NEW_CATEGORY_ID || 2)
     .single();
 
   if (featuredError || newError) {

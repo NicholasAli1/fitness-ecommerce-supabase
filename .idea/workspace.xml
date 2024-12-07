@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e49b3f2b-51ce-4571-9995-3bd3fec64e75" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/stripe/checkout_sessions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/cat.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/list/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/list/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/login/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Add.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Add.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomizeProducts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomizeProducts.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProductList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,22 +34,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/nicholasali/Documents/Programming/JavaScript/fitness-ecommerce",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "/Users/nicholasali/Documents/Programming/JavaScript/fitness-ecommerce/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/nicholasali/Documents/Programming/JavaScript/fitness-ecommerce&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/nicholasali/Documents/Programming/JavaScript/fitness-ecommerce/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -60,7 +72,8 @@
       <updated>1732406310329</updated>
       <workItem from="1732406311704" duration="2000" />
       <workItem from="1732408683580" duration="20000" />
-      <workItem from="1732999812372" duration="3017000" />
+      <workItem from="1732999812372" duration="3106000" />
+      <workItem from="1733092024310" duration="6409000" />
     </task>
     <servers />
   </component>
@@ -75,7 +88,6 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/profile/page.tsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
