@@ -1,120 +1,38 @@
 import { create } from "zustand";
-import { supabase } from '@/lib/supabaseClient';
+import { supabase } from "@/utils/supabase/client";
 
-type CartState = {
-  cart: any[]; // Define a more specific type if your cart structure is known
-  isLoading: boolean;
+type CartItem = {
+  id: string;
+  title: string;
+  img?: string;
+  price: number;
+  quantity: number;
+};
+
+type CartStore = {
+  cart: CartItem[];
   counter: number;
-  getCart: () => void;
-  addItem: (productId: string, variantId: string, quantity: number) => void;
+  isLoading: boolean;
+  addItem: (item: CartItem) => void;
   removeItem: (itemId: string) => void;
 };
 
-export const useCartStore = create<CartState>((set) => ({
+export const useCartStore = create<CartStore>((set) => ({
   cart: [],
-  isLoading: true,
   counter: 0,
+  isLoading: false,
 
-  getCart: async () => {
-    set((state) => ({ ...state, isLoading: true }));
-    try {
-      const { data: cartData, error } = await supabase
-        .from("cart")
-        .select("id, line_items(*)");
-
-      if (error) {
-        console.error("Error fetching cart:", error.message);
-        set((state) => ({ ...state, isLoading: false }));
-        return;
-      }
-
-      set({
-        cart: cartData || [],
-        counter: cartData?.[0]?.line_items?.length || 0,
-        isLoading: false,
-      });
-    } catch (err) {
-      console.error("Error fetching cart:", err);
-      set((state) => ({ ...state, isLoading: false }));
-    }
-  },
-
-  addItem: async (productId, variantId, quantity) => {
-    set((state) => ({ ...state, isLoading: true }));
-    try {
-      const { data: cartItem, error } = await supabase
-        .from("line_items")
-        .insert([
-          {
-            product_id: productId,
-            variant_id: variantId,
-            quantity,
-            cart_id: 1, // Update with dynamic cart ID if necessary
-          },
-        ])
-        .select();
-
-      if (error) {
-        console.error("Error adding item to cart:", error.message);
-        set((state) => ({ ...state, isLoading: false }));
-        return;
-      }
-
-      const { data: updatedCart, error: cartError } = await supabase
-        .from("cart")
-        .select("id, line_items(*)")
-        .eq("id", 1); // Update with dynamic cart ID if necessary
-
-      if (cartError) {
-        console.error("Error updating cart:", cartError.message);
-        set((state) => ({ ...state, isLoading: false }));
-        return;
-      }
-
-      set({
-        cart: updatedCart || [],
-        counter: updatedCart?.[0]?.line_items?.length || 0,
-        isLoading: false,
-      });
-    } catch (err) {
-      console.error("Error adding item:", err);
-      set((state) => ({ ...state, isLoading: false }));
-    }
+  addItem: async (item) => {
+    set((state) => ({
+      cart: [...state.cart, item],
+      counter: state.counter + 1,
+    }));
   },
 
   removeItem: async (itemId) => {
-    set((state) => ({ ...state, isLoading: true }));
-    try {
-      const { error } = await supabase
-        .from("line_items")
-        .delete()
-        .eq("id", itemId);
-
-      if (error) {
-        console.error("Error removing item from cart:", error.message);
-        set((state) => ({ ...state, isLoading: false }));
-        return;
-      }
-
-      const { data: updatedCart, error: cartError } = await supabase
-        .from("cart")
-        .select("id, line_items(*)")
-        .eq("id", 1); // Update with dynamic cart ID if necessary
-
-      if (cartError) {
-        console.error("Error updating cart:", cartError.message);
-        set((state) => ({ ...state, isLoading: false }));
-        return;
-      }
-
-      set({
-        cart: updatedCart || [],
-        counter: updatedCart?.[0]?.line_items?.length || 0,
-        isLoading: false,
-      });
-    } catch (err) {
-      console.error("Error removing item:", err);
-      set((state) => ({ ...state, isLoading: false }));
-    }
+    set((state) => ({
+      cart: state.cart.filter((item) => item.id !== itemId),
+      counter: state.counter - 1,
+    }));
   },
 }));

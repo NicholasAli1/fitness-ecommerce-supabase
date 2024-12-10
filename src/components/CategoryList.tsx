@@ -1,47 +1,39 @@
-import { supabase } from "@/lib/supabaseClient"; // Assuming you're using supabase client here
-import Image from "next/image";
+import { supabase } from "@/utils/supabase/client";
 import Link from "next/link";
+import Image from "next/image";
 
 const CategoryList = async () => {
-  // Fetch all categories from Supabase
   const { data: categories, error } = await supabase
     .from("categories")
-    .select("*");
+    .select("*")
+    .order("id");
 
   if (error) {
-    console.error("Error fetching categories:", error.message);
+    console.error("Error fetching categories:", error);
     return <div>Error loading categories</div>;
   }
 
-  if (!categories || categories.length === 0) {
-    console.error("No categories found.");
-    return <div>No categories available.</div>;
-  }
-
   return (
-    <div className="px-4 overflow-x-scroll scrollbar-hide">
-      <div className="flex gap-4 md:gap-8">
-        {categories.map((item) => (
-          <Link
-            href={`/list?cat=${item.slug}`}
-            className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/4 xl:w-1/6"
-            key={item.id} // Use item.id if it's the primary key
-          >
-            <div className="relative bg-slate-100 w-full h-96">
+    <div className="flex flex-wrap gap-4 justify-center">
+      {categories?.map((category) => (
+        <Link
+          key={category.id}
+          href={`/category/${category.slug}`}
+          className="w-full sm:w-1/3 lg:w-1/4 p-4 flex flex-col items-center group hover:bg-fuchsia-50 transition-all"
+        >
+          <div className="relative h-[200px] w-[200px] bg-gray-100 rounded-lg">
+            {category.img && (
               <Image
-                src={item.media?.mainMedia?.image?.url || "/cat.png"}
-                alt={item.name || "Category"}
+                src={category.img}
+                alt={category.name}
                 fill
-                sizes="20vw"
-                className="object-cover"
+                className="object-contain p-4"
               />
-            </div>
-            <h1 className="mt-8 font-light text-xl tracking-wide">
-              {item.name}
-            </h1>
-          </Link>
-        ))}
-      </div>
+            )}
+          </div>
+          <h2 className="text-xl font-bold uppercase mt-4">{category.name}</h2>
+        </Link>
+      ))}
     </div>
   );
 };

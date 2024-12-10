@@ -11,13 +11,13 @@ const HomePage = async () => {
   const { data: featuredCategory, error: featuredError } = await supabase
     .from("categories")
     .select("*")
-    .eq("id", process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID || 1)
+    .eq("id", process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID || 27)
     .single();
 
   const { data: newCategory, error: newError } = await supabase
     .from("categories")
     .select("*")
-    .eq("id", process.env.FEATURED_PRODUCTS_NEW_CATEGORY_ID || 2)
+    .eq("id", process.env.FEATURED_PRODUCTS_NEW_CATEGORY_ID || 25)
     .single();
 
   if (featuredError || newError) {
