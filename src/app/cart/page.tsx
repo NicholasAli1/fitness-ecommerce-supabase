@@ -2,7 +2,8 @@ import CartItems from "@/components/CartItems";
 
 const CartPage = () => {
   return (
-    <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-9rem)] flex flex-col text-red-500 lg:flex-row">
+    <div className="min-h-[calc(100vh-6rem)] p-4 lg:px-20 xl:px-40">
+      <h1 className="text-3xl font-bold mb-8 text-gray-800">Shopping Cart</h1>
       <CartItems />
     </div>
   );
