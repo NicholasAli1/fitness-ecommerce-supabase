@@ -20,12 +20,17 @@ const CartModal = () => {
       ) : (
         <>
           {cart.map((item) => (
-            <div key={item.id} className="flex justify-between items-center mb-4">
+            <div
+              key={item.id}
+              className="flex justify-between items-center mb-4"
+            >
               <div>
-                <h3>{item.title}</h3>
-                <p>${item.price} x {item.quantity}</p>
+                <h3>{item.name}</h3>
+                <p>
+                  ${item.price} x {item.quantity}
+                </p>
               </div>
-              <button 
+              <button
                 onClick={() => removeItem(item.id)}
                 className="text-red-500"
               >

@@ -9,7 +9,7 @@ const AddToCartButton = ({ product }: { product: any }) => {
   const handleAddToCart = () => {
     addItem({
       id: product.id,
-      title: product.title,
+      name: product.name, 
       img: product.img,
       price: product.price,
       quantity: quantity,

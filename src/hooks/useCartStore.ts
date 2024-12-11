@@ -3,7 +3,7 @@ import { supabase } from "@/utils/supabase/client";
 
 type CartItem = {
   id: string;
-  title: string;
+  name: string;
   img?: string;
   price: number;
   quantity: number;

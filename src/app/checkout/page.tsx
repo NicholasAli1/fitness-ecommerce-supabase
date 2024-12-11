@@ -31,7 +31,7 @@ const CheckoutPage = () => {
             {cart.map((item) => (
               <div key={item.id} className="flex justify-between items-center py-4 border-b">
                 <div className="flex flex-col">
-                  <p className="text-lg font-medium text-gray-800">{item.title}</p>
+                  <p className="text-lg font-medium text-gray-800">{item.name}</p>
                   <p className="text-sm text-gray-500">Quantity: {item.quantity}</p>
                 </div>
                 <p className="text-lg font-semibold">${(item.price * item.quantity).toFixed(2)}</p>
