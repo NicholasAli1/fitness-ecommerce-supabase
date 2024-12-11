@@ -1,6 +1,9 @@
 "use client";
 import { useCartStore } from "@/hooks/useCartStore";
 import { useRouter } from "next/navigation";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 const CheckoutPage = () => {
   const { cart, counter } = useCartStore();
@@ -8,8 +11,37 @@ const CheckoutPage = () => {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-  const handleCheckout = () => {
-    router.push("/success");
+  const handleCheckout = async () => {
+    try {
+      const stripe = await stripePromise;
+      
+      if (!stripe) throw new Error('Stripe failed to load');
+
+      // Create checkout session
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cart }),
+      });
+
+      const { sessionId, error } = await response.json();
+
+      if (error) throw new Error(error);
+
+      // Redirect to Stripe checkout
+      const result = await stripe.redirectToCheckout({
+        sessionId,
+      });
+
+      if (result.error) {
+        throw new Error(result.error.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong with the checkout process.');
+    }
   };
 
   return (
@@ -47,7 +79,7 @@ const CheckoutPage = () => {
               onClick={handleCheckout}
               className="w-full bg-red-500 text-white py-4 px-6 rounded-lg font-medium hover:bg-red-600 transition-colors"
             >
-              Complete Order
+              Proceed to Payment
             </button>
           </div>
         </div>

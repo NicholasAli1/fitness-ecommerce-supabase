@@ -20,7 +20,7 @@ const SuccessPage = () => {
   return (
     <div className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-15rem)] flex items-center justify-center text-center text-2xl text-green-700">
       <div className="flex flex-col gap-6">
-        <h2 className="text-4xl font-bold">Order Successful! (Demo)</h2>
+        <h2 className="text-4xl font-bold">Order Successful!</h2>
         <p>Redirecting to homepage...</p>
       </div>
     </div>
