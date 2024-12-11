@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "app-uploads-cdn.fera.ai",
       },
+      {
+        protocol: "https",
+        hostname: "ycnswxbrngvqgibeqyno.supabase.co",
+      },
     ],
   },
 };

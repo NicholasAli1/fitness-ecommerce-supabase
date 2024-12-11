@@ -7,8 +7,8 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.error("Supabase environment variables are missing.");
 }
 
-console.log("SUPABASE_URL:", process.env.SUPABASE_URL);
-console.log("SUPABASE_ANON_KEY:", process.env.SUPABASE_ANON_KEY);
+console.log("SUPABASE_URL:", process.env.NEXT_PUBLIC_SUPABASE_URL);
+console.log("SUPABASE_ANON_KEY:", process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
 // Create a client for the server-side (e.g., SSR or API routes)
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

@@ -11,7 +11,7 @@ const HomePage = async () => {
   const { data: featuredCategory, error: featuredError } = await supabase
     .from("categories")
     .select("*")
-    .eq("id", process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID || 27)
+    .eq("id", process.env.FEATURED_PRODUCTS_FEATURED_CATEGORY_ID || 22)
     .single();
 
   const { data: newCategory, error: newError } = await supabase
@@ -30,13 +30,13 @@ const HomePage = async () => {
       <Slider />
       {/* Featured Products */}
       <div className="mt-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
-        <h1 className="text-2xl">Featured Products</h1>
+        {/* <h1 className="text-2xl">Featured Products</h1>
         <Suspense fallback={<Skeleton />}>
           <ProductList
             categoryId={featuredCategory ? featuredCategory.id : 1}
             limit={4}
           />
-        </Suspense>
+        </Suspense> */}
       </div>
       {/* Categories */}
       <div className="mt-24">
@@ -49,7 +49,7 @@ const HomePage = async () => {
       </div>
       {/* New Products */}
       <div className="mt-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
-        <h1 className="text-2xl">New Products</h1>
+        {/* <h1 className="text-2xl">New Products</h1> */}
       </div>
     </div>
   );

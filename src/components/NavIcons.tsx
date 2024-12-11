@@ -8,14 +8,14 @@ const NavIcons = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex gap-4 items-center">
+    <div className="flex gap-4 items-center ">
       <Link href="/cart">
         <div className="relative">
           <Image src="/cart.png" alt="" width={28} height={28} />
         </div>
       </Link>
       <Link href="/profile">
-        <Image src="/user.png" alt="" width={28} height={28} />
+        {/* <Image src="/user.png" alt="" width={28} height={28} /> */}
       </Link>
     </div>
   );
