@@ -22,9 +22,9 @@ const CategoryList = async () => {
           className="w-full sm:w-1/3 lg:w-1/4 p-4 flex flex-col items-center group hover:bg-fuchsia-50 transition-all"
         >
           <div className="relative h-[200px] w-[200px] bg-gray-100 rounded-lg">
-            {category.img && (
+            {category.imageUrl && (
               <Image
-                src={category.img}
+                src={category.imageUrl}
                 alt={category.name}
                 fill
                 className="object-contain p-4"

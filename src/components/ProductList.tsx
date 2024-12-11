@@ -31,7 +31,7 @@ const ProductList = async ({
 
   // Handle category filtering
   if (cat) {
-    query = query.eq("categoryslug", cat);
+    query = query.eq("slug", cat);
   } else if (categoryId) {
     query = query.eq("categoryid", categoryId);
   }

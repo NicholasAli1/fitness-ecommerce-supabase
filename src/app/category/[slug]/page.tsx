@@ -7,7 +7,6 @@ const CategoryPage = async ({ params }: { params: { slug: string } }) => {
     .from("categories")
     .select("*")
     .eq("slug", params.slug)
-    .eq("imageUrl", true)
     .single();
 
   if (error || !category) {
@@ -18,7 +17,7 @@ const CategoryPage = async ({ params }: { params: { slug: string } }) => {
   return (
     <div className="p-4 lg:px-20 xl:px-40">
       <h1 className="text-3xl font-bold mb-8">{category.name}</h1>
-      <ProductList cat={params.slug} />
+      <ProductList categoryId={category.id} />
     </div>
   );
 };
