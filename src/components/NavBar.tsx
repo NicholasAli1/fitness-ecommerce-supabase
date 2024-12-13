@@ -29,7 +29,7 @@ const NavBar = () => {
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
             <Link href="/legal">Legal</Link>
-            <Link href="/fitness-plan">AI Fitness Plan</Link>
+            {/* <Link href="/fitness-plan">AI Fitness Plan</Link> */}
           </div>
         </div>
         {/* RIGHT */}

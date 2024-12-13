@@ -3,7 +3,10 @@ import React from "react";
 const LegalPage = () => {
   return (
     <div className="min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-15rem)] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 py-16">
-      <h1 className="text-4xl font-bold mb-12">Terms of Use</h1>
+      <h1 className="text-4xl font-bold mb-8">Terms of Use</h1>
+      <p className="text-gray-600 mb-8">
+        Effective Date: {new Date().toLocaleDateString()}
+      </p>
 
       <div className="space-y-8">
         <section>
@@ -25,7 +28,9 @@ const LegalPage = () => {
             My Fitness AI provides AI-powered fitness training and equipment
             services. While we strive to ensure the accuracy of our AI
             recommendations, they should not be considered as professional
-            medical advice.
+            medical advice. Always consult a qualified healthcare professional
+            before starting any fitness program or making significant changes to
+            your exercise routine.
           </p>
         </section>
 
@@ -74,6 +79,53 @@ const LegalPage = () => {
             We reserve the right to modify these terms at any time. Continued
             use of our services after such modifications constitutes acceptance
             of the updated terms.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">
+            8. Intellectual Property Rights
+          </h2>
+          <p className="text-gray-600 leading-relaxed">
+            All content on our website is the property of My Fitness AI or its
+            licensors and is protected by copyright, trademark, and other
+            intellectual property laws.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">9. User Content</h2>
+          <p className="text-gray-600 leading-relaxed">
+            You are responsible for any content you post on our website. By
+            posting content, you grant My Fitness AI a non-exclusive, worldwide,
+            royalty-free license to use, reproduce, and distribute your content.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">10. Termination</h2>
+          <p className="text-gray-600 leading-relaxed">
+            We may terminate your access to our services at any time, for any
+            reason, without notice.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">11. Entire Agreement</h2>
+          <p className="text-gray-600 leading-relaxed">
+            These Terms of Use constitute the entire agreement between you and
+            My Fitness AI regarding your use of our services.
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-2xl font-semibold mb-4">12. Governing Law</h2>
+          <p className="text-gray-600 leading-relaxed">
+            These Terms of Use shall be governed by and construed in accordance
+            with the laws of the jurisdiction in which you reside. Any disputes
+            arising out of or related to these Terms of Use shall be subject to
+            the exclusive jurisdiction of the courts located in your
+            jurisdiction.
           </p>
         </section>
 
