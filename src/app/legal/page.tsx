@@ -83,13 +83,14 @@ const LegalPage = () => {
         </section>
 
         <section>
-          <h2 className="text-2xl font-semibold mb-4">
-            8. Intellectual Property Rights
-          </h2>
+          <h2 className="text-2xl font-semibold mb-4">8. Children’s Access</h2>
           <p className="text-gray-600 leading-relaxed">
-            All content on our website is the property of My Fitness AI or its
-            licensors and is protected by copyright, trademark, and other
-            intellectual property laws.
+            Our website and services are not intended for children under the age
+            of 13. By using our services, you represent that you are at least 13
+            years old, or, if under the age of 18, that you have the consent of
+            a parent or legal guardian to use the services. If we learn that a
+            child under 13 has provided us with personal information, we will
+            promptly delete such information.
           </p>
         </section>
 
